@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {RatingsService} from '../ratings.service';
-import {Rating} from './rating';
+import {Rating} from '../rating';
 
 
 @Component({

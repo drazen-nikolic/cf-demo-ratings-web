@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 import {HttpClient} from '@angular/common/http';
-import {Rating} from './rating-form/rating';
-import {Observable} from 'rxjs';
+import {Rating} from './rating';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +15,7 @@ export class RatingsService {
     return this.http.post<any>(this.env.ratingsServiceUrl, rating);
   }
 
-  findAll(): Observable<Rating[]> {
-    return this.http.get<Rating[]>(this.env.ratingsServiceUrl);
+  findAll() {
+    return this.http.get<Rating[]>(this.env.ratingsServiceUrl, { observe: 'response' });
   }
 }

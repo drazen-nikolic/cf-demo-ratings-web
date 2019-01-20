@@ -12,16 +12,16 @@ export class RatingsListComponent implements OnInit {
 
   ratingsList: any;
   interval: any;
-
+  test1 = 30;
   ngOnInit() {
     this.refreshData();
     this.interval = setInterval(() => {
       this.refreshData();
-    }, 5000);
+    }, 3000);
   }
 
   refreshData() {
     this.ratingsService.findAll()
-    .subscribe(data => this.ratingsList = data);
+    .subscribe((data: any) => this.ratingsList = data.body._embedded.ratings);
   }
 }

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  ratingsServiceUrl: 'https://jsonplaceholder.typicode.com/users'
+  ratingsServiceUrl: 'http://localhost:8080/ratings'
 };
 
 /*

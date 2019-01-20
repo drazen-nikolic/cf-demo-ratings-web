@@ -1,6 +1,7 @@
 applications:
-  - name: sample-web
+  - name: ratings-web
     memory: 256M
     disk_quota: 1024M
     instances: 1
+    path: ./dist/angular-web
     buildpack: staticfile_buildpack
