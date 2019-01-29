@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable, Output} from '@angular/core';
 import { environment } from '../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Rating} from './rating';
@@ -9,10 +9,14 @@ import {Rating} from './rating';
 export class RatingsService {
 
   private env = environment;
+  @Output() newRatingSavedEvent: EventEmitter<null> = new EventEmitter();
+
   constructor(private http: HttpClient) { }
 
-  save(rating: Rating) {
-    return this.http.post<any>(this.env.ratingsServiceUrl, rating);
+  save(rating: Rating): void {
+    this.http.post<any>(this.env.ratingsServiceUrl, rating).subscribe(
+      null, null, () => this.newRatingSavedEvent.emit()
+    );
   }
 
   findAll() {

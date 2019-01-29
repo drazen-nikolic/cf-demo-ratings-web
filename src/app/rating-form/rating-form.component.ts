@@ -18,12 +18,14 @@ export class RatingFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.ratingModel);
-    this.ratingsService.save(this.ratingModel)
-      .subscribe(
-        data => console.log('Success!', data),
-        error => console.log('Error!', error)
-      );
+    this.ratingsService.save(this.ratingModel);
+    this.clearForm();
+  }
+
+  private clearForm() {
+    this.ratingModel.mark = 0;
+    this.ratingModel.name = null;
+    this.ratingModel.comment = null;
   }
 
 }

@@ -7,21 +7,25 @@ import {RatingsService} from '../ratings.service';
   styleUrls: ['./ratings-list.component.css']
 })
 export class RatingsListComponent implements OnInit {
+  static readonly REFRESH_INTERVAL = 10000; // ms
 
   constructor(private ratingsService: RatingsService) { }
 
   ratingsList: any;
   interval: any;
-  test1 = 30;
+
   ngOnInit() {
     this.refreshData();
     this.interval = setInterval(() => {
       this.refreshData();
-    }, 3000);
+    }, RatingsListComponent.REFRESH_INTERVAL);
+    this.ratingsService.newRatingSavedEvent.subscribe(
+      () => this.refreshData()
+    );
   }
 
   refreshData() {
     this.ratingsService.findAll()
-    .subscribe((data: any) => this.ratingsList = data.body._embedded.ratings);
+    .subscribe((data: any) => this.ratingsList = data.body._embedded.ratings.reverse());
   }
 }

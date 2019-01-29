@@ -3,8 +3,8 @@
   <div class="container" *ngFor="let rating of ratingsList">
     <div class="row">
       <div class="star-ratings-sprite" style="float:left"><span [style.width]="(rating.mark * 20) + '%'" class="star-ratings-sprite-rating"></span></div>
-      <div class="col-md-1"><b>{{rating.name}}</b></div>
-      <div class="col-md-2"><i>{{rating.comment}}</i></div>
+      <div class="col-md-2"><b>{{rating.name}}</b></div>
+      <div class="col-md-4"><i>{{rating.comment}}</i></div>
     </div>
   </div>
 
